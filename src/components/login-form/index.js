@@ -22,7 +22,9 @@ const LoginForm = ({ onSubmit }) => {
       <div className="form-group">
         <input type="password" name="password" defaultValue="" id="password" />
       </div>
-      <button type="submit">Log In</button>
+      <button type="submit" className="submit">
+        Log In
+      </button>
     </form>
   );
 };

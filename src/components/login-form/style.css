@@ -1,3 +1,8 @@
 .login-form {
   width: 100%;
+
+  & > .submit {
+    background-color: #7289da;
+    color: white;
+  }
 }
