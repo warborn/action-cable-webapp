@@ -1,6 +1,7 @@
 import React from "react";
 import LoginForm from "./components/login-form";
 import Wave from "./components/wave";
+import api from "./lib/api";
 
 import "./style.css";
 
@@ -12,7 +13,12 @@ function App() {
       </div>
       <LoginForm
         onSubmit={(values) => {
-          console.log(values);
+          api
+            .login({ user: values })
+            .then((response) => {
+              console.log(response);
+            })
+            .catch((e) => console.error(e));
         }}
       />
     </div>

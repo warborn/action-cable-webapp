@@ -17,10 +17,16 @@ const LoginForm = ({ onSubmit }) => {
     <form onSubmit={handleSubmit} className="login-form">
       <div className="form-group">
         <label htmlFor="email">Email</label>
-        <input type="text" name="email" defaultValue="" id="email" />
+        <input type="text" name="email" defaultValue="" id="email" required />
       </div>
       <div className="form-group">
-        <input type="password" name="password" defaultValue="" id="password" />
+        <input
+          type="password"
+          name="password"
+          defaultValue=""
+          id="password"
+          required
+        />
       </div>
       <button type="submit" className="submit">
         Log In
