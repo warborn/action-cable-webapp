@@ -1,0 +1,16 @@
+.notification-sender {
+  display: flex;
+  flex-direction: column;
+  width: 20%;
+
+  & > * {
+    height: 100%;
+    width: 100%;
+    background-color: #7289da;
+    color: white;
+  }
+
+  & > .options {
+    background-color: #43b581;
+  }
+}
