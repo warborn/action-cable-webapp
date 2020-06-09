@@ -1,9 +1,14 @@
 import React from "react";
 import PropTypes from "prop-types";
-import { AuthProvider } from "./auth-context";
+import { AuthProvider } from "./context/auth-context";
+import { UserProvider } from "./context/user-context";
 
 const AppProviders = ({ children }) => {
-  return <AuthProvider>{children}</AuthProvider>;
+  return (
+    <AuthProvider>
+      <UserProvider>{children}</UserProvider>
+    </AuthProvider>
+  );
 };
 
 AppProviders.propTypes = {

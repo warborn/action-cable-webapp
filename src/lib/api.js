@@ -2,7 +2,16 @@ import { saveItem, getItem } from "../lib/local-storage";
 
 const API_URL = "http://localhost:3000";
 
-const request = (endpoint, options) => fetch(`${API_URL}${endpoint}`, options);
+const request = (endpoint, options) =>
+  fetch(`${API_URL}${endpoint}`, {
+    ...options,
+    mode: "cors",
+    headers: {
+      ...options.headers,
+      "Content-Type": "application/json; charset=UTF-8",
+      Authorization: getItem("Authorization"),
+    },
+  });
 
 const commitLogin = (response) => {
   if (response.status === 200) {
@@ -15,12 +24,13 @@ const commitLogin = (response) => {
 const post = async (endpoint, payload) => {
   return request(endpoint, {
     method: "POST",
-    mode: "cors",
     body: JSON.stringify(payload),
-    headers: {
-      "Content-Type": "application/json; charset=UTF-8",
-      Authorization: getItem("Authorization"),
-    },
+  });
+};
+
+const get = async (endpoint) => {
+  return request(endpoint, {
+    method: "GET",
   });
 };
 
@@ -31,6 +41,7 @@ const login = (payload) => {
 };
 
 export default {
+  get,
   post,
   login,
 };
