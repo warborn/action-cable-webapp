@@ -1,9 +1,8 @@
 import React from "react";
-import { useUser } from "~hooks/user";
+import HomePage from "~pages/home-page";
 
 const AuthenticatedApp = () => {
-  const user = useUser();
-  return <div>Logged In as {user.email}!</div>;
+  return <HomePage />;
 };
 
 export default AuthenticatedApp;

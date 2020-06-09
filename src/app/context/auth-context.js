@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import Spinner from "~components/spinner";
 import api from "~lib/api";
 import { useAuthedUser } from "~hooks/user";
@@ -6,8 +6,7 @@ import { useAuthedUser } from "~hooks/user";
 const AuthContext = React.createContext();
 
 const AuthProvider = (props) => {
-  const [authedUser, { loading }] = useAuthedUser();
-  const [loggedInUser, setLoggedInUser] = useState(null);
+  const [authedUser, { loading }, setAuthedUser] = useAuthedUser();
 
   if (loading) {
     return <Spinner />;
@@ -17,15 +16,20 @@ const AuthProvider = (props) => {
     api
       .login({ user: payload })
       .then((response) => {
-        setLoggedInUser(response);
+        setAuthedUser(response);
       })
       .catch((e) => console.error(e));
   };
-  const logout = () => {};
+  const logout = () => {
+    api
+      .logout()
+      .then(() => setAuthedUser(null))
+      .catch((e) => console.error(e));
+  };
 
   return (
     <AuthContext.Provider
-      value={{ user: loggedInUser || authedUser, login, logout }}
+      value={{ user: authedUser, login, logout }}
       {...props}
     />
   );

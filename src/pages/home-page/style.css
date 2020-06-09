@@ -1,0 +1,22 @@
+.home-page {
+  display: flex;
+  flex-direction: column;
+
+  & > .header {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    background-color: #36393f;
+    padding: 10px 20px;
+    color: white;
+
+    & > * {
+      margin-left: 16px;
+    }
+
+    & > .logout {
+      color: white;
+      border-color: white;
+    }
+  }
+}

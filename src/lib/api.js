@@ -1,4 +1,4 @@
-import { saveItem, getItem } from "../lib/local-storage";
+import { saveItem, getItem, removeItem } from "../lib/local-storage";
 
 const API_URL = "http://localhost:3000";
 
@@ -21,18 +21,27 @@ const commitLogin = (response) => {
   return response;
 };
 
-const post = async (endpoint, payload) => {
-  return request(endpoint, {
+const commitLogout = (response) => {
+  if (response.status === 204) {
+    removeItem("Authorization");
+  }
+
+  return response;
+};
+
+const post = async (endpoint, payload) =>
+  request(endpoint, {
     method: "POST",
     body: JSON.stringify(payload),
   });
-};
 
-const get = async (endpoint) => {
-  return request(endpoint, {
+const get = async (endpoint) =>
+  request(endpoint, {
     method: "GET",
   });
-};
+
+const deleteRequest = async (endpoint) =>
+  request(endpoint, { method: "DELETE" });
 
 const login = (payload) => {
   return post("/login", payload)
@@ -40,8 +49,13 @@ const login = (payload) => {
     .then((response) => response.json());
 };
 
+const logout = () => {
+  return deleteRequest("/logout").then(commitLogout);
+};
+
 export default {
   get,
   post,
   login,
+  logout,
 };

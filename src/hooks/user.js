@@ -1,4 +1,4 @@
-import { useEffect, useReducer } from "react";
+import { useEffect, useReducer, useCallback } from "react";
 import api from "~lib/api";
 export { useUser } from "../app/context/user-context";
 export { useAuth } from "../app/context/auth-context";
@@ -9,12 +9,13 @@ const initialState = {
   error: null,
 };
 
-const GET_USER = "GET_USER";
-const GET_USER_SUCCESS = "GET_USER_SUCCESS";
-const GET_USER_ERROR = "GET_USER_ERROR";
+const SET_USER = "SET_USER";
+const FETCH_USER = "FETCH_USER";
+const FETCH_USER_SUCCESS = "FETCH_USER_SUCCESS";
+const FETCH_USER_ERROR = "FETCH_USER_ERROR";
 
 const reducer = (state, action) => {
-  if (action.type === GET_USER) {
+  if (action.type === FETCH_USER) {
     return {
       ...state,
       loading: true,
@@ -23,7 +24,7 @@ const reducer = (state, action) => {
     };
   }
 
-  if (action.type === GET_USER_SUCCESS) {
+  if (action.type === FETCH_USER_SUCCESS || action.type === SET_USER) {
     return {
       ...state,
       loading: false,
@@ -31,7 +32,7 @@ const reducer = (state, action) => {
       data: action.payload.data,
     };
   }
-  if (action.type === GET_USER_ERROR) {
+  if (action.type === FETCH_USER_ERROR) {
     return {
       ...state,
       loading: false,
@@ -45,18 +46,22 @@ export const useAuthedUser = () => {
   const [state, dispatch] = useReducer(reducer, initialState);
 
   useEffect(() => {
-    dispatch({ type: GET_USER });
+    dispatch({ type: FETCH_USER });
     api
       .get("/users/me")
       .then((response) => response.json())
       .then((response) => {
-        dispatch({ type: GET_USER_SUCCESS, payload: { data: response } });
+        dispatch({ type: FETCH_USER_SUCCESS, payload: { data: response } });
       })
       .catch((e) => {
-        dispatch({ type: GET_USER_SUCCESS, payload: { error: e } });
+        dispatch({ type: FETCH_USER_SUCCESS, payload: { error: e } });
         console.error(e);
       });
   }, []);
 
-  return [state.data, state];
+  const setUser = useCallback((user) => {
+    dispatch({ type: SET_USER, payload: { data: user } });
+  }, []);
+
+  return [state.data, state, setUser];
 };
