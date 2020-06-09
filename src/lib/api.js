@@ -15,6 +15,7 @@ const commitLogin = (response) => {
 const post = async (endpoint, payload) => {
   return request(endpoint, {
     method: "POST",
+    mode: "cors",
     body: JSON.stringify(payload),
     headers: {
       "Content-Type": "application/json; charset=UTF-8",

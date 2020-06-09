@@ -20,6 +20,7 @@ const LoginForm = ({ onSubmit }) => {
         <input type="text" name="email" defaultValue="" id="email" required />
       </div>
       <div className="form-group">
+        <label htmlFor="password">Password</label>
         <input
           type="password"
           name="password"
