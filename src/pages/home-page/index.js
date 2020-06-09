@@ -17,7 +17,18 @@ const Header = () => {
 };
 
 const Content = () => {
-  return <div className="content">hello world</div>;
+  return (
+    <div className="content">
+      <div className="notification-sender">
+        <select className="options">
+          <option value="1">Alert</option>
+          <option value="2">Activity</option>
+          <option value="3">Download</option>
+        </select>
+        <button className="submit">Send Notification</button>
+      </div>
+    </div>
+  );
 };
 
 const HomePage = () => {
