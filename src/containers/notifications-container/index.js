@@ -1,6 +1,8 @@
-import { useEffect } from "react";
-import { useWebsocket } from "~hooks/websocket";
+import React, { useEffect } from "react";
 import PropTypes from "prop-types";
+import { toast } from "react-toastify";
+import { useWebsocket } from "~hooks/websocket";
+import Notification from "~components/notification";
 
 const NotificationsContainer = ({ children }) => {
   const websocket = useWebsocket();
@@ -11,7 +13,7 @@ const NotificationsContainer = ({ children }) => {
         { channel: "NotificationsChannel" },
         {
           received: (data) => {
-            console.log("Notification received: ", data);
+            toast(<Notification {...data} />);
           },
         }
       );
