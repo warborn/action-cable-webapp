@@ -1,6 +1,6 @@
 import { saveItem, getItem, removeItem } from "../lib/local-storage";
 
-const API_URL = "http://localhost:3000";
+const API_URL = process.env.REACT_APP_API_URL;
 
 const request = (endpoint, options) =>
   fetch(`${API_URL}${endpoint}`, {
