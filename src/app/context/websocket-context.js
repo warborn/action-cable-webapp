@@ -7,7 +7,7 @@ const WebsocketProvider = (props) => {
   const [websocket, setWebsocket] = useState(null);
 
   useEffect(() => {
-    setWebsocket(ActionCable.createConsumer("ws://localhost:3000/cable"));
+    setWebsocket(ActionCable.createConsumer(process.env.REACT_APP_WEBSOCKET_URL)
   }, []);
 
   return <WebsocketContext.Provider value={websocket} {...props} />;
