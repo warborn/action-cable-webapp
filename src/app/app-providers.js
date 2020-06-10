@@ -2,11 +2,14 @@ import React from "react";
 import PropTypes from "prop-types";
 import { AuthProvider } from "./context/auth-context";
 import { UserProvider } from "./context/user-context";
+import { WebsocketProvider } from "./context/websocket-context";
 
 const AppProviders = ({ children }) => {
   return (
     <AuthProvider>
-      <UserProvider>{children}</UserProvider>
+      <WebsocketProvider>
+        <UserProvider>{children}</UserProvider>
+      </WebsocketProvider>
     </AuthProvider>
   );
 };

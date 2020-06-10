@@ -307,6 +307,7 @@ module.exports = function (webpackEnv) {
         ...(modules.webpackAliases || {}),
         "~lib": path.resolve("./src/lib/"),
         "~components": path.resolve("./src/components"),
+        "~containers": path.resolve("./src/containers"),
         "~pages": path.resolve("./src/pages"),
         "~hooks": path.resolve("./src/hooks"),
       },

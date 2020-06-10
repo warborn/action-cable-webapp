@@ -1,6 +1,7 @@
 import React from "react";
 import { useAuth } from "~hooks/user";
 import NotificationSender from "~components/notification-sender";
+import NotificationsContainer from "~containers/notifications-container";
 import api from "~lib/api";
 
 import "./style.css";
@@ -32,10 +33,12 @@ const Content = () => {
 
 const HomePage = () => {
   return (
-    <div className="home-page">
-      <Header />
-      <Content />
-    </div>
+    <NotificationsContainer>
+      <div className="home-page">
+        <Header />
+        <Content />
+      </div>
+    </NotificationsContainer>
   );
 };
 
