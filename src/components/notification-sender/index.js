@@ -4,11 +4,8 @@ import { capitalize } from "~lib/utils";
 
 import "./style.css";
 
-const DEFAULT_OPTION = "alert";
-const OPTIONS = ["alert", "activity", "download"];
-
-const NotificationSender = ({ onSubmit }) => {
-  const [notificationType, setNotificationType] = useState(DEFAULT_OPTION);
+const NotificationSender = ({ onSubmit, defaultValue, options }) => {
+  const [notificationType, setNotificationType] = useState(defaultValue);
 
   const handleClick = useCallback(() => {
     onSubmit(notificationType);
@@ -23,7 +20,7 @@ const NotificationSender = ({ onSubmit }) => {
         }}
         value={notificationType}
       >
-        {OPTIONS.map((value) => (
+        {options.map((value) => (
           <option key={value} value={value}>
             {capitalize(value)}
           </option>

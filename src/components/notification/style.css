@@ -1,0 +1,38 @@
+.Toastify__toast.Toastify__toast--default {
+  border-radius: 4px;
+  padding: 20px 10px;
+
+  & .Toastify__close-button {
+    color: white;
+    margin-left: 16px;
+  }
+}
+
+.Toastify__toast.Toastify__toast--default,
+.notification {
+  background-color: #2f3136;
+  color: white;
+}
+
+.notification {
+  display: flex;
+  font-size: 0.85rem;
+  justify-content: center;
+  align-items: center;
+
+  & > .icon-container {
+    margin-right: 16px;
+
+    &.-alert {
+      color: #ffa000;
+    }
+
+    &.-activity {
+      color: #18ffff;
+    }
+
+    &.-download {
+      color: #1de9b6;
+    }
+  }
+}

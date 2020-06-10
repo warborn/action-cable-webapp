@@ -3,6 +3,7 @@ import PropTypes from "prop-types";
 import { toast } from "react-toastify";
 import { useWebsocket } from "~hooks/websocket";
 import Notification from "~components/notification";
+import { NOTIFICATION_TYPES_ICONS } from "~containers/constants";
 
 const NotificationsContainer = ({ children }) => {
   const websocket = useWebsocket();
@@ -13,7 +14,8 @@ const NotificationsContainer = ({ children }) => {
         { channel: "NotificationsChannel" },
         {
           received: (data) => {
-            toast(<Notification {...data} />);
+            const Icon = NOTIFICATION_TYPES_ICONS[data.type];
+            toast(<Notification {...data} icon={<Icon />} />);
           },
         }
       );

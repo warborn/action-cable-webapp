@@ -1,24 +1,28 @@
 import React from "react";
 import PropTypes from "prop-types";
+import cx from "classnames";
 
-const Notification = ({ closeToast, type, message }) => {
+import "./style.css";
+
+const Notification = ({ icon, type, message }) => {
   return (
     <div className="notification">
-      <p>
-        {type}:{message}
-      </p>
-      <button onClick={closeToast}>Close</button>
+      {icon ? (
+        <div className={cx("icon-container", `-${type}`)}>{icon}</div>
+      ) : null}
+      <div className="message">{message}</div>
     </div>
   );
 };
 
 Notification.propTypes = {
-  closeToast: PropTypes.func,
+  icon: PropTypes.element,
+  type: PropTypes.string.isRequired,
   message: PropTypes.string.isRequired,
 };
 
 Notification.defaultProps = {
-  closeToast: () => {},
+  icon: null,
 };
 
 export default Notification;

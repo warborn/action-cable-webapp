@@ -2,6 +2,10 @@ import React from "react";
 import { useAuth } from "~hooks/user";
 import NotificationSender from "~components/notification-sender";
 import NotificationsContainer from "~containers/notifications-container";
+import {
+  DEFAULT_NOTIFICATION_TYPE,
+  NOTIFICATION_TYPES,
+} from "~containers/constants";
 import api from "~lib/api";
 
 import "./style.css";
@@ -23,6 +27,8 @@ const Content = () => {
   return (
     <div className="content">
       <NotificationSender
+        defaultValue={DEFAULT_NOTIFICATION_TYPE}
+        options={NOTIFICATION_TYPES}
         onSubmit={(type) => {
           api.post("/notifications", { notification: { type } });
         }}
