@@ -8,7 +8,7 @@ const AuthenticatedApp = () => {
   return (
     <>
       <HomePage />
-      <ToastContainer autoClose={false} />
+      <ToastContainer />
     </>
   );
 };

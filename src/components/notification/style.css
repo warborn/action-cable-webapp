@@ -8,6 +8,10 @@
   }
 }
 
+.Toastify__progress-bar.Toastify__progress-bar--default {
+  background: #43b581;
+}
+
 .Toastify__toast.Toastify__toast--default,
 .notification {
   background-color: #2f3136;
