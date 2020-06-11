@@ -1,7 +1,7 @@
 import React from "react";
-import Spinner from "~components/spinner";
 import api from "~lib/api";
 import { useAuthedUser } from "~hooks/user";
+import LoadingPage from "~pages/loading-page";
 
 const AuthContext = React.createContext();
 
@@ -9,7 +9,7 @@ const AuthProvider = (props) => {
   const [authedUser, { loading }, setAuthedUser] = useAuthedUser();
 
   if (loading) {
-    return <Spinner />;
+    return <LoadingPage />;
   }
 
   const login = (payload) => {

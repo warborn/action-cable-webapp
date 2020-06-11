@@ -53,6 +53,7 @@
     "react-dev-utils": "^10.2.1",
     "react-dom": "^16.13.1",
     "react-feather": "^2.0.8",
+    "react-spinners": "^0.8.3",
     "react-toastify": "^6.0.5",
     "resolve": "1.15.0",
     "resolve-url-loader": "3.1.1",
@@ -138,6 +139,9 @@
   "babel": {
     "presets": [
       "react-app"
+    ],
+    "plugins": [
+      "emotion"
     ]
   }
 }
