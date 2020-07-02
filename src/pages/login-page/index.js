@@ -12,11 +12,7 @@ const LoginPage = () => {
       <div className="wave-container">
         <Wave />
       </div>
-      <LoginForm
-        onSubmit={(values) => {
-          login(values);
-        }}
-      />
+      <LoginForm onSubmit={login} />
     </div>
   );
 };

@@ -1,4 +1,4 @@
-import { saveItem, getItem, removeItem } from "../lib/local-storage";
+import { saveItem, getToken, removeItem } from "../lib/local-storage";
 
 const API_URL = process.env.REACT_APP_API_URL;
 
@@ -9,7 +9,7 @@ const request = (endpoint, options) =>
     headers: {
       ...options.headers,
       "Content-Type": "application/json; charset=UTF-8",
-      Authorization: getItem("Authorization"),
+      Authorization: getToken(),
     },
   });
 
