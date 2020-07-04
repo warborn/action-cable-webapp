@@ -26,7 +26,23 @@
 
   & > .icon-container {
     margin-right: 16px;
+  }
 
+  & > .body {
+    display: flex;
+    flex-direction: column;
+
+    & > .content {
+      margin-top: 8px;
+    }
+
+    & .content > .entry {
+      font-weight: bold;
+    }
+  }
+
+  & > .icon-container,
+  & > .body > .content > .entry {
     &.-alert {
       color: #ffa000;
     }
@@ -37,6 +53,10 @@
 
     &.-download {
       color: #1de9b6;
+    }
+
+    &.-summary {
+      color: #64b5f6;
     }
   }
 }
