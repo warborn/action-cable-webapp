@@ -18,13 +18,13 @@ const AuthProvider = (props) => {
       .then((response) => {
         setAuthedUser(response);
       })
-      .catch((e) => console.error(e));
+      .catch(console.error);
   };
   const logout = () => {
     api
       .logout()
       .then(() => setAuthedUser(null))
-      .catch((e) => console.error(e));
+      .catch(console.error);
   };
 
   return (

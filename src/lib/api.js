@@ -16,6 +16,8 @@ const request = (endpoint, options) =>
 const commitLogin = (response) => {
   if (response.status === 200) {
     saveItem("Authorization", response.headers.get("Authorization"));
+  } else if (response.status === 401) {
+    throw new Error("Unauthorized");
   }
 
   return response;
